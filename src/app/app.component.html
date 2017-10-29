@@ -1,0 +1,71 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    FACE FEUD
+  </h1>
+</div>
+
+<div id="playerAttack" [hidden]="!started">
+  <img id="cuteImg" style="width:200px;" src="{{maxEmotion.img}}">
+  <h3 class="font-effect-shadow-multiple">{{playerDmg | number : '1.2-2'}}</h3>
+</div>
+
+<div id="doAttack" [hidden]="!donutBlink">
+  <img style="width:200px;" src="https://i.imgur.com/wzf7CvL.png">
+  <h3 class="font-effect-shadow-multiple">{{enemyDmg | number : '1.2-2'}}</h3>
+</div>
+
+<div class="container" [hidden]="started">
+  <div id="infoBox">
+    <div id="desc">
+      <p style="font-size:24px;">Defeat the evil monster before he beats you by making faces!</p>
+          <p><b>Happy:</b> Medium damage, reliable<br>
+          <b>Angry:</b> High damage, hard to do<br>
+          <b>Sad:</b> Low damage, block damage</p>
+    </div>        
+
+    <div id="startBox">
+      <button (click)="videoStart()" class="btn btn-primary btn-lg raised center-block">Start</button>
+      <p id="disclaimer" class="center-block"><b>NOTE:</b> By using this app, you agree that Microsoft may store and use images and data to improve their services and have your images uploaded for this app to function.</p>      
+    </div>
+
+  </div>
+</div>
+
+
+<div id="gameBox" [hidden]="!started">
+  <div class="container">
+    <div id="playBox" class="row">
+
+      <div id="playerBox" class="col-md-6">
+        <div id="statBox">
+          <div>
+            <span class="health"><b>HP : {{player.hp | number : '1.2-2'}} / 100</b></span>              
+            <button id="capture" class="btn btn-primary btn-md raised" (click)="capture()">Show your feelings!</button>              
+          </div>
+        </div>
+
+        <div id="vidBox">
+            <video #hardwareVideo width="600px"></video>
+        </div>
+
+        <div>{{emotions[0].emotion}} : {{emotions[0].level}}</div>
+        <div>{{emotions[1].emotion}} : {{emotions[1].level}}</div>
+        <div>{{emotions[2].emotion}} : {{emotions[2].level}}</div>
+      </div>
+
+
+      <div id="enemyBox" class="col-md-6">
+        <span class="health"><b>HP: {{enemy.hp | number : '1.0-2'}} / 50</b></span><br>
+        <img id="enemyImg" src="{{enemy.im}}" style="width:400px">
+      </div>
+        
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div #output></div>
